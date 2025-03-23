@@ -1,11 +1,98 @@
 * {
   box-sizing: border-box;
-  margin: 0;
+}
 
+h1 {
+  font-family: "Lobster", sans-serif;
+  font-size: 50px;
+  margin-bottom: 2px;
+  color: white;
+}
+
+p {
+  padding: 0 1rem 1rem 1rem;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: white;
+  font-size: 14px;
+  font-family: sans-serif;
+  text-align: center;
+  text-decoration: none;
 }
 
 body {
-  background-color: linear-gradient (#615dad, #ffc8da);
+  background-image: linear-gradient(#615dad, #ffc8da);
+  height: 100vh;
+  margin: 0;
+  background-repeat: no-repeat;
+}
+
+.piskvorky {
+  width: 300px;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  margin: 5% auto auto auto;
+  border: 0;
+}
+
+img {
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  display: block;
+}
+
+.piskvorky__text {
+  background-color: #283e50;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.piskvorky__buttons {
+  background-color: #283e50;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+button {
+  border: none;
+}
+
+.piskvorky__pravidla {
+  margin-bottom: 1px;
+  padding: 10px 0;
+  background-color: #1fcca4;
+
+}
+
+.piskvorky__hrat {
+  padding: 10px 0;
+  background-color: #0197f6;
+
+}
+
+.piskvorky__pravidla:hover {
+  background-color: #1cbb96;
+}
+
+.piskvorky__hrat:hover {
+  background-color: #0090e9;
 }
