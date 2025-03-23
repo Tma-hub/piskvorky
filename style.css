@@ -64,3 +64,26 @@ img {
   align-items: center;
 
 }
+
+/* Buttons piskvorky */
+
+.piskvorky__buttons {
+  background-color: #283e50;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+button {
+  border: none;
+}
+
+.piskvorky__pravidla {
+  margin-bottom: 1px;
+  padding: 10px 0;
+  background-color: #1fcca4;
+
+}
