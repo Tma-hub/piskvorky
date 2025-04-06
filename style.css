@@ -168,3 +168,24 @@ h2 {
   border-radius: 50%;
   margin: 5px;
 }
+
+/* Buttons hra */
+
+.hra__tlacitka {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.hra__home {
+  padding: 5px;
+  border-radius: 10%;
+  background-color: #1fcca4;
+  margin-right: 0.5rem;
+}
+
+.hra__restart {
+  padding: 5px;
+  border-radius: 10%;
+  background-color: #0197f6;
+}
