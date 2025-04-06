@@ -136,3 +136,13 @@ h2 {
   min-height: 100dvh;
   max-width: 100%;
 }
+
+.hra__content {
+  width: 100%;
+  max-width: 80vmin;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
