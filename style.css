@@ -28,6 +28,8 @@ a {
   font-family: sans-serif;
   text-align: center;
   text-decoration: none;
+  display: block;
+
 }
 
 body {
