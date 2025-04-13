@@ -36,20 +36,25 @@ body {
   background-image: linear-gradient(#615dad, #ffc8da);
   height: 100vh;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-repeat: no-repeat;
 }
 
 /* Section piskvorky */
 
 .piskvorky {
-  width: 330px;
+  max-width: 350px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 5% auto auto auto;
-  border: 0;
+  margin: 5% auto 0 auto;
+  border: 0 auto;
 }
 
 img {
@@ -67,6 +72,7 @@ img {
   justify-content: center;
   align-items: center;
   height: 300px;
+  margin: 0 auto;
 
 }
 
