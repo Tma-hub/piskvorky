@@ -164,8 +164,6 @@ h2 {
 .hra__kruh {
   width: 25px;
   height: 25px;
-  border: solid 3px;
-  border-radius: 50%;
   margin: 5px;
 }
 
@@ -217,4 +215,117 @@ h2 {
 .hra__pole button:active {
   background-color: rgba(236, 236, 236, 0.6);
 
+}
+
+.hra__home:hover {
+  background-color: #1cbb96;
+  cursor: pointer;
+}
+
+.hra__restart:hover {
+  background-color: #0090e9;
+  cursor: pointer;
+}
+
+
+/*
+-----Křížky a kolečka-----
+
+.board__field--circle {
+  background-image: url("circle_blk.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.board__field--cross {
+  background-image: url("cross_blk.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+} 
+
+*/
+
+
+/* Kdo hraje: */
+.hra__kruh--circle {
+  background-image: url('circle.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.hra__kruh--cross {
+  background-image: url('cross.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+
+
+/* Bonus - tlačítka s efekty */
+
+.board__field--circle {
+  position: relative;
+}
+
+.board__field--cross {
+  position: relative;
+}
+
+.board__field--circle::after {
+  content: "";
+  background-image: url("circle_blk.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: zvetseniKruhu 0.5s ease-out forwards;
+  width: 60%;
+  height: 60%;
+}
+
+.board__field--cross::after {
+  content: "";
+  background-image: url("cross_blk.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: zvetseniKrize 0.5s ease-out forwards;
+  width: 60%;
+  height: 60%;
+}
+
+@keyframes zvetseniKruhu {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes zvetseniKrize {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.element {
+  animation: zvetseniKruhu 0.2s ease-in-out;
+}
+
+.krize {
+  animation: zvetseniKrize 0.2s ease-in-out;
 }
