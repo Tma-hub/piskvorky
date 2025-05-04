@@ -36,6 +36,9 @@ body {
   background-image: linear-gradient(#615dad, #ffc8da);
   height: 100vh;
   margin: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 #body__index {
@@ -259,6 +262,7 @@ h2 {
 
 
 /* Kdo hraje: */
+
 .hra__kruh--circle {
   background-image: url('circle.svg');
   background-repeat: no-repeat;
@@ -274,7 +278,8 @@ h2 {
 }
 
 
-/* Tlačítko: nastaví rozměr buňky */
+/* Tlačítko */
+
 button.board__field {
   width: 100%;
   height: 100%;
@@ -285,7 +290,7 @@ button.board__field {
   cursor: pointer;
 }
 
-/* Ikony uvnitř tlačítka (pole) */
+/* Ikony uvnitř tlačítka*/
 .board__field--circle,
 .board__field--cross {
   width: 100%;
@@ -293,7 +298,7 @@ button.board__field {
   position: relative;
 }
 
-/* Obrázek (ikonka) jako ::after pseudoelement */
+/* Pseudoelementy */
 .board__field--circle::after,
 .board__field--cross::after {
   content: "";
@@ -308,7 +313,6 @@ button.board__field {
   height: 60%;
 }
 
-/* Specifické varianty a animace */
 .board__field--circle::after {
   background-image: url("circle_blk.svg");
   animation: zvetseniKruhu 0.15s ease-out forwards;
@@ -340,7 +344,6 @@ button.board__field {
   }
 }
 
-/* Volitelné třídy (pro JS nebo extra efekty) */
 .element {
   animation: zvetseniKruhu 0.15s ease-in-out;
 }
