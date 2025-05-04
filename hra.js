@@ -77,7 +77,7 @@ const handleClick = (event) => {
   } else if (vitez === 'tie') {
     disableGame();
     setTimeout(() => {
-      alert('Remíza! Nikdo nevyhrál.');
+      alert('Remíza, hra skončila nerozhodně!');
       location.reload();
     }, 100);
   }
