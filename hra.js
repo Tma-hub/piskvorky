@@ -32,54 +32,104 @@ const disableGame = () => {
   });
 };
 
-/* Kliknutí na jedno pole */
-const handleClick = (event) => {
-  const field = event.target;
-
-  if (
-    field.classList.contains('board__field--circle') ||
-    field.classList.contains('board__field--cross')
-  )
-    return;
-
-  if (currentPlayer === 'circle') {
-    changeToCircle(event);
-    currentPlayer = 'cross';
-  } else {
-    changeToCross(event);
-    currentPlayer = 'circle';
-  }
-
-  updatePlayerIndicator();
-
-  /* Určení výherce */
-  const herniPole = Array.from(gameField).map((field) => {
+/* Získání stavu hrací plochy pro API a výherce */
+const getBoard = () => {
+  return Array.from(gameField).map((field) => {
     if (field.classList.contains('board__field--cross')) return 'x';
     if (field.classList.contains('board__field--circle')) return 'o';
     return '_';
   });
+};
 
-  const vitez = findWinner(herniPole);
+/* Převod souřadnic z API na index */
+const coordsToIndex = (x, y) => x + y * 10;
 
-  /* Výhra nebo remíza */
+/* Kontrola výherce nebo remízy */
+const checkWinner = () => {
+  const board = getBoard();
+  const vitez = findWinner(board);
+
   if (vitez === 'x') {
     disableGame();
     setTimeout(() => {
       alert('Vyhrál křížek!');
       location.reload();
     }, 100);
+    return true;
   } else if (vitez === 'o') {
     disableGame();
     setTimeout(() => {
       alert('Vyhrálo kolečko!');
       location.reload();
     }, 100);
+    return true;
   } else if (vitez === 'tie') {
     disableGame();
     setTimeout(() => {
       alert('Remíza, hra skončila nerozhodně!');
       location.reload();
     }, 100);
+    return true;
+  }
+
+  return false;
+};
+
+/* Získání a odehrání tahu AI */
+const playAIMove = async () => {
+  const board = getBoard();
+
+  const response = await fetch(
+    'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        board: board,
+        player: 'x',
+      }),
+    },
+  );
+
+  const data = await response.json();
+  const index = coordsToIndex(data.position.x, data.position.y);
+
+  /* Zpoždení AI simuluje kliknutí */
+  setTimeout(() => {
+    gameField[index].click();
+  }, 200);
+};
+
+/* Kliknutí na jedno pole */
+const handleClick = async (event) => {
+  const field = event.target;
+
+  if (
+    field.classList.contains('board__field--circle') ||
+    field.classList.contains('board__field--cross') ||
+    field.disabled
+  )
+    return;
+
+  if (currentPlayer === 'circle') {
+    changeToCircle(event);
+    field.disabled = true;
+
+    if (!checkWinner()) {
+      currentPlayer = 'cross';
+      updatePlayerIndicator();
+      await playAIMove(); // AI hraje za křížek
+    }
+  } else if (currentPlayer === 'cross') {
+    changeToCross(event);
+    field.disabled = true;
+
+    if (!checkWinner()) {
+      currentPlayer = 'circle';
+      updatePlayerIndicator();
+    }
   }
 };
 
